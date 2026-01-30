@@ -72,6 +72,7 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background-color: #1a1a1a;
+  cursor: pointer;
 }
 
 .imageWrapper {
@@ -114,24 +115,51 @@
 .itemTitle {
   font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.itemDescription {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
   margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
-.projectButton {
+.buttonGroup {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+  flex-wrap: wrap;
+}
+
+.projectButton,
+.projectButtonSecondary {
   display: inline-block;
   padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
-  background-color: var(--color-accent);
-  color: var(--color-bg);
   font-weight: 600;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
-  align-self: flex-start;
+}
+
+.projectButton {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
 }
 
 .projectButton:hover {
   background-color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+.projectButtonSecondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-text);
+}
+
+.projectButtonSecondary:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
   transform: translateY(-2px);
 }
 
@@ -175,5 +203,15 @@
 
   .itemTitle {
     font-size: 1.2rem;
+  }
+
+  .buttonGroup {
+    gap: calc(var(--spacing-unit) * 1.5);
+  }
+
+  .projectButton,
+  .projectButtonSecondary {
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    font-size: 0.85rem;
   }
 }

@@ -1,82 +1,106 @@
-import { motion } from 'framer-motion'
-import { useInView } from './useInView'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './Services.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
     title: 'Visual Design',
     items: [
-      'Branding & Identity',
-      'Layout & Typography',
-      'Production Design',
+      'Brand Identity & Logo Design',
+      'Marketing Collateral',
+      'Print Design',
       'Packaging Design',
-      'Digital & Print Assets',
-    ],
+      'Environmental Graphics'
+    ]
   },
   {
     title: 'UX/UI Design',
     items: [
-      'User Experience Design',
+      'User Research & Testing',
       'Wireframing & Prototyping',
-      'Responsive Web Design',
+      'Interface Design',
       'Design Systems',
-      'Accessibility Standards',
-    ],
+      'Responsive Design'
+    ]
   },
   {
     title: 'Web Development',
     items: [
-      'HTML, CSS, JavaScript',
-      'React & Modern Frameworks',
-      'Responsive Layouts',
-      'Web Standards',
+      'HTML, CSS & JavaScript',
+      'Responsive Websites',
+      'Web Application Development',
       'Performance Optimization',
-    ],
+      'Accessibility Implementation'
+    ]
   },
   {
     title: 'Creative Direction',
     items: [
-      'Concept Development',
       'Campaign Strategy',
-      'Team Leadership',
-      'Production Support',
-      'Visual Problem-Solving',
-    ],
-  },
+      'Art Direction',
+      'Visual Storytelling',
+      'Brand Guidelines',
+      'Team Leadership'
+    ]
+  }
 ]
 
 const Services = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 })
+  const sectionRef = useRef<HTMLElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(titleRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        rotationX: -90,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+      })
+
+      gsap.from(gridRef.current?.children || [], {
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out'
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
-    <section id="services" className={styles.services} ref={ref}>
+    <section ref={sectionRef} id="services" className={styles.services}>
       <div className={styles.container}>
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className={styles.title}>SERVICES</h2>
+        <div className={styles.header}>
+          <h2 ref={titleRef} className={styles.title}>Services</h2>
           <p className={styles.subtitle}>What I Do</p>
-        </motion.div>
-
-        <div className={styles.grid}>
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              className={styles.serviceCard}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
+        </div>
+        <div ref={gridRef} className={styles.grid}>
+          {services.map((service) => (
+            <div key={service.title} className={styles.serviceCard}>
               <h3 className={styles.serviceTitle}>{service.title}</h3>
               <ul className={styles.serviceList}>
-                {service.items.map((item, i) => (
-                  <li key={i}>{item}</li>
+                {service.items.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
