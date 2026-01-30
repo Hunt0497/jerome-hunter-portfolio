@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useInView } from './useInView'
 import styles from './Portfolio.module.css'
+import GraphicDesignGallery from './GraphicDesignGallery'
 
 const portfolioData = {
   graphicDesign: [
@@ -55,6 +56,7 @@ type Category = 'graphicDesign' | 'webDevelopment' | 'uxui'
 const Portfolio = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 })
   const [activeCategory, setActiveCategory] = useState<Category>('graphicDesign')
+  const [showGraphicGallery, setShowGraphicGallery] = useState(false)
 
   const categories = [
     { key: 'graphicDesign' as Category, label: 'Graphic Design' },
@@ -102,59 +104,79 @@ const Portfolio = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => {
+                if (activeCategory === 'graphicDesign') {
+                  setShowGraphicGallery(true)
+                }
+              }}
+              style={{ cursor: activeCategory === 'graphicDesign' ? 'pointer' : 'default' }}
             >
               <div className={styles.imageWrapper}>
                 <img src={item.image} alt={item.title} />
                 <div className={styles.overlay}>
                   <h3 className={styles.itemTitle}>{item.title}</h3>
-                  <div className={styles.buttonGroup}>
-                    {'website' in item && item.website && (
-                      <a
-                        href={item.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectButton}
-                      >
-                        View Website
-                      </a>
-                    )}
-                    {'github' in item && item.github && (
-                      <a
-                        href={item.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectButton}
-                      >
-                        View GitHub
-                      </a>
-                    )}
-                    {'prototype' in item && item.prototype && (
-                      <a
-                        href={item.prototype}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectButton}
-                      >
-                        View Prototype
-                      </a>
-                    )}
-                    {'figma' in item && item.figma && (
-                      <a
-                        href={item.figma}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.projectButton}
-                      >
-                        View Figma
-                      </a>
-                    )}
-                  </div>
+                  {activeCategory === 'graphicDesign' ? (
+                    <button className={styles.projectButton}>
+                      View Gallery
+                    </button>
+                  ) : (
+                    <div className={styles.buttonGroup}>
+                      {'website' in item && item.website && (
+                        <a
+                          href={item.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.projectButton}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View Website
+                        </a>
+                      )}
+                      {'github' in item && item.github && (
+                        <a
+                          href={item.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.projectButton}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View GitHub
+                        </a>
+                      )}
+                      {'prototype' in item && item.prototype && (
+                        <a
+                          href={item.prototype}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.projectButton}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View Prototype
+                        </a>
+                      )}
+                      {'figma' in item && item.figma && (
+                        <a
+                          href={item.figma}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.projectButton}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          View Figma
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {showGraphicGallery && (
+        <GraphicDesignGallery onClose={() => setShowGraphicGallery(false)} />
+      )}
     </section>
   )
 }
