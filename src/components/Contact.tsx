@@ -1,86 +1,68 @@
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { motion } from 'framer-motion'
+import { useInView } from './useInView'
 import styles from './Contact.module.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const Contact = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const infoRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        },
-        scale: 0.5,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      })
-
-      gsap.from(infoRef.current?.children || [], {
-        scrollTrigger: {
-          trigger: infoRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out'
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
+  const [ref, isInView] = useInView({ threshold: 0.2 })
 
   return (
-    <section ref={sectionRef} id="contact" className={styles.contact}>
+    <section id="contact" className={styles.contact} ref={ref}>
       <div className={styles.container}>
-        <div className={styles.content}>
-          <h2 ref={titleRef} className={styles.title}>Let's Work Together</h2>
+        <motion.div
+          className={styles.content}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className={styles.title}>LET'S WORK TOGETHER</h2>
           <p className={styles.subtitle}>
-            Have a project in mind? Let's discuss how we can bring your vision to life.
+            Ready to bring your project to life? Let's connect.
           </p>
 
-          <div ref={infoRef} className={styles.contactInfo}>
+          <div className={styles.contactInfo}>
             <div className={styles.infoItem}>
-              <div className={styles.label}>Email</div>
-              <a href="mailto:hunt0497@algonquinlive.com" className={styles.value}>
-                hunt0497@algonquinlive.com
+              <span className={styles.label}>Email</span>
+              <a href="mailto:designerjeromehunter@gmail.com" className={styles.value}>
+                designerjeromehunter@gmail.com
               </a>
             </div>
             <div className={styles.infoItem}>
-              <div className={styles.label}>Phone</div>
-              <a href="tel:+18763638945" className={styles.value}>
-                +1 (876) 363-8945
+              <span className={styles.label}>Phone</span>
+              <a href="tel:437-876-1469" className={styles.value}>
+                437-876-1469
               </a>
             </div>
             <div className={styles.infoItem}>
-              <div className={styles.label}>Location</div>
-              <div className={styles.value}>Kingston, Jamaica</div>
+              <span className={styles.label}>Location</span>
+              <span className={styles.value}>Orléans, Ottawa, ON, Canada</span>
+            </div>
+            <div className={styles.infoItem}>
+              <span className={styles.label}>Portfolio</span>
+              <a
+                href="https://www.jeromehunter.design"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.value}
+              >
+                www.jeromehunter.design
+              </a>
             </div>
           </div>
 
           <div className={styles.cta}>
-            <a href="mailto:hunt0497@algonquinlive.com" className={styles.ctaButton}>
-              Contact Me
+            <a href="mailto:designerjeromehunter@gmail.com" className={styles.ctaButton}>
+              Send Message
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <p>&copy; 2024 Jerome Hunter. All rights reserved.</p>
-          <p className={styles.footerNote}>Designed & developed with passion</p>
+          <p>&copy; 2026 Jerome Hunter. All rights reserved.</p>
+          <p className={styles.footerNote}>
+            UX, Digital Design | Visual Communication
+          </p>
         </div>
       </footer>
     </section>

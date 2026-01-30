@@ -1,32 +1,29 @@
-import { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap'
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import styles from './Navigation.module.css'
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false)
-  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    // Animate navigation on mount
-    gsap.from(navRef.current, {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+    <motion.nav
+      className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <div className={styles.container}>
-        <a href="#home" className={styles.logo}>JEROME HUNTER</a>
+        <a href="#home" className={styles.logo}>
+          JEROME HUNTER
+        </a>
         <div className={styles.links}>
           <a href="#about">About</a>
           <a href="#portfolio">Portfolio</a>
@@ -34,7 +31,7 @@ const Navigation = () => {
           <a href="#contact">Contact</a>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 
