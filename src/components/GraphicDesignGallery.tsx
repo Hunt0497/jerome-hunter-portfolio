@@ -16,27 +16,128 @@ const categories: Category[] = [
   {
     name: 'Product Design',
     folder: 'product-design',
-    images: [] // Will be populated from folder
+    images: [
+      '/images/graphic-design/product-design/bronte/relish.png',
+      '/images/graphic-design/product-design/dunsons/jam-jelly.png',
+      '/images/graphic-design/product-design/flavours-of-the-past/ackee-label.png',
+      '/images/graphic-design/product-design/flavours-of-the-past/coffee-label.png',
+      '/images/graphic-design/product-design/flavours-of-the-past/ginger-label.png',
+      '/images/graphic-design/product-design/neuzotic/jack-fruit-juice.png',
+      '/images/graphic-design/product-design/springvale/omg-dressing.png',
+      '/images/graphic-design/product-design/springvale/vinaigrette.png'
+    ]
   },
   {
     name: 'Vehicle Wrap Design',
     folder: 'vehicle-wraps',
-    images: []
+    images: [
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-back.png',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-front.png',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-side-2.png',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-side.png',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/van-back.jpg',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/van-front.jpg',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/van-side-1.jpg',
+      '/images/graphic-design/vehicle-wraps/associated-manufacturers/van-side-2.jpg'
+    ]
   },
   {
     name: 'Billboards Design',
     folder: 'billboards',
-    images: []
+    images: [
+      '/images/graphic-design/billboards/ncb/easy-safe-free-board1.png',
+      '/images/graphic-design/billboards/redstripe/cash-back-bottles.png',
+      '/images/graphic-design/billboards/redstripe/feel-the-music.png',
+      '/images/graphic-design/billboards/redstripe/jamaica-50-wall-wrap.png',
+      '/images/graphic-design/billboards/redstripe/just-right-1.png',
+      '/images/graphic-design/billboards/redstripe/just-right-2.png',
+      '/images/graphic-design/billboards/redstripe/just-right-3.png',
+      '/images/graphic-design/billboards/redstripe/light-building-graphic.png',
+      '/images/graphic-design/billboards/redstripe/wall-display-beach-party.png',
+      '/images/graphic-design/billboards/stratus/board-1.png',
+      '/images/graphic-design/billboards/stratus/board-2.png',
+      '/images/graphic-design/billboards/stratus/board-3.png',
+      '/images/graphic-design/billboards/stratus/board-4.png',
+      '/images/graphic-design/billboards/stratus/board-5.png',
+      '/images/graphic-design/billboards/stratus/board-6.png',
+      '/images/graphic-design/billboards/walkerswood/airport-departure-wall-board.png',
+      '/images/graphic-design/billboards/walkerswood/airport-round-about-board.jpg'
+    ]
   },
   {
     name: 'Press & Poster Design',
     folder: 'press-design',
-    images: []
+    images: [
+      '/images/graphic-design/press-design/brunswick/brunswick-press-poster-2.png',
+      '/images/graphic-design/press-design/brunswick/brunswick-press-poster-3.png',
+      '/images/graphic-design/press-design/brunswick/brunswick-press-poster-4.png',
+      '/images/graphic-design/press-design/brunswick/brunswick-press-poster.png',
+      '/images/graphic-design/press-design/first-global/through-Our-Eyes-1.png',
+      '/images/graphic-design/press-design/first-global/through-Our-Eyes-2.png',
+      '/images/graphic-design/press-design/first-global/through-Our-Eyes-3.png',
+      '/images/graphic-design/press-design/grace/mackerel-1.png',
+      '/images/graphic-design/press-design/grace/mackerel-2.png',
+      '/images/graphic-design/press-design/grace/mackerel-3.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad1.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad2.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad3.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad4.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad5.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad6.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad7.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad8.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad9.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad10.png',
+      '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad11.png',
+      '/images/graphic-design/press-design/ncb/easy-safe-free-campaign/easy-safe-free-1.png',
+      '/images/graphic-design/press-design/ncb/easy-safe-free-campaign/easy-safe-free-2.png',
+      '/images/graphic-design/press-design/ncb/easy-safe-free-campaign/easy-safe-free-3.png',
+      '/images/graphic-design/press-design/ncb/rewards-campaign/rewards-1.png',
+      '/images/graphic-design/press-design/ncb/rewards-campaign/rewards-2.png',
+      '/images/graphic-design/press-design/ncb/rewards-campaign/rewards-3.png',
+      '/images/graphic-design/press-design/ncb/safety-campaign/safety-press-1.png',
+      '/images/graphic-design/press-design/ncb/safety-campaign/safety-press-2.png',
+      '/images/graphic-design/press-design/ncb/safety-campaign/safety-press-3.png',
+      '/images/graphic-design/press-design/ncb/safety-campaign/safety-press-4.png',
+      '/images/graphic-design/press-design/ncb/safety-campaign/safety-press-5.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss1.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss2.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss3.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss4.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss5_.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss6.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss7.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss8.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss9.png',
+      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss10.png',
+      '/images/graphic-design/press-design/stratus/access-more.png',
+      '/images/graphic-design/press-design/stratus/do-more.png',
+      '/images/graphic-design/press-design/stratus/earn-more.png',
+      '/images/graphic-design/press-design/tastee/jamaica-nice.jpeg',
+      '/images/graphic-design/press-design/tastee/taste-the-land-we-love-2.jpeg',
+      '/images/graphic-design/press-design/tastee/taste-the-land-we-love.png'
+    ]
   },
   {
     name: 'Other Marketing Materials',
     folder: 'other-marketing-materials',
-    images: []
+    images: [
+      '/images/graphic-design/other-marketing-materials/bma-poster.jpg',
+      '/images/graphic-design/other-marketing-materials/caribbean-choice-sm1.png',
+      '/images/graphic-design/other-marketing-materials/caribbean-choice-sm2.png',
+      '/images/graphic-design/other-marketing-materials/caribbean-choice-sm3.png',
+      '/images/graphic-design/other-marketing-materials/easy-safe-free-banner.png',
+      '/images/graphic-design/other-marketing-materials/farmer-brown-punch-poster1.png',
+      '/images/graphic-design/other-marketing-materials/farmer-brown-punch-poster2.png',
+      '/images/graphic-design/other-marketing-materials/ncb-saving-1.png',
+      '/images/graphic-design/other-marketing-materials/ncb-saving-2.png',
+      '/images/graphic-design/other-marketing-materials/ncb-saving-3.png',
+      '/images/graphic-design/other-marketing-materials/tastee-poster-design.png',
+      '/images/graphic-design/other-marketing-materials/tastee-shirt-design.png',
+      '/images/graphic-design/other-marketing-materials/walkerswood_gs_graphic.png',
+      '/images/graphic-design/other-marketing-materials/walkerswood_gs_wobbler.png',
+      '/images/graphic-design/other-marketing-materials/walkerswood-green-seasoning.png'
+    ]
   }
 ]
 
@@ -54,17 +155,8 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
     setSelectedCategory(categoryName)
   }
 
-  const getImagesForCategory = (folder: string): string[] => {
-    // Generate placeholder image paths
-    // In a real implementation, these would be actual images from the folder
-    const imageCount = 8 // Adjust based on actual folder contents
-    return Array.from({ length: imageCount }, (_, i) =>
-      `/images/graphic-design/${folder}/image-${i + 1}.jpg`
-    )
-  }
-
   const selectedCategoryData = categories.find(c => c.name === selectedCategory)
-  const currentImages = selectedCategoryData ? getImagesForCategory(selectedCategoryData.folder) : []
+  const currentImages = selectedCategoryData ? selectedCategoryData.images : []
 
   return (
     <motion.div
@@ -94,14 +186,18 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
         {!selectedCategory ? (
           <div className={styles.categoryGrid}>
             {categories.map((category) => (
-              <div
+              <motion.div
                 key={category.name}
                 className={styles.categoryCard}
                 onClick={() => handleCategoryClick(category.name)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <div className={styles.categoryImage}>
                   <img
-                    src={`/images/graphic-design/${category.folder}/thumb.jpg`}
+                    src={category.images[0]}
                     alt={category.name}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
@@ -110,7 +206,7 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
                   />
                 </div>
                 <h3 className={styles.categoryName}>{category.name}</h3>
-              </div>
+              </motion.div>
             ))}
           </div>
         ) : (
@@ -124,9 +220,13 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
             <h3 className={styles.galleryTitle}>{selectedCategory}</h3>
             <div className={styles.galleryGrid}>
               {currentImages.map((image, index) => (
-                <div
+                <motion.div
                   key={index}
                   className={styles.galleryItem}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
                 >
                   <img
                     src={image}
@@ -136,7 +236,7 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
                       target.src = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="%23444"/><text x="50%" y="50%" text-anchor="middle" fill="%23aaa" font-family="Arial" font-size="16">${selectedCategory} ${index + 1}</text></svg>`
                     }}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

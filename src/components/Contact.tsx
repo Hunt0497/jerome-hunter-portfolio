@@ -36,22 +36,11 @@ const Contact = () => {
               <span className={styles.label}>Location</span>
               <span className={styles.value}>Orléans, Ottawa, ON, Canada</span>
             </div>
-            <div className={styles.infoItem}>
-              <span className={styles.label}>Portfolio</span>
-              <a
-                href="https://www.jeromehunter.design"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.value}
-              >
-                www.jeromehunter.design
-              </a>
-            </div>
           </div>
 
           <div className={styles.cta}>
             <a href="mailto:designerjeromehunter@gmail.com" className={styles.ctaButton}>
-              Send Message
+              Contact Me
             </a>
           </div>
         </motion.div>

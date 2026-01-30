@@ -27,7 +27,6 @@ const services = [
     title: 'Web Development',
     items: [
       'HTML, CSS, JavaScript',
-      'React & Modern Frameworks',
       'Responsive Layouts',
       'Web Standards',
       'Performance Optimization',

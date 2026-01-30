@@ -44,7 +44,7 @@ const About = () => {
             <p>
               Led teams directing visual execution for integrated campaigns across
               print, outdoor, digital, and social for major clients. Delivered over
-              100 campaigns with production-ready artwork for high-visibility placements.
+              50+ campaigns with production-ready artwork for high-visibility placements.
             </p>
           </motion.div>
 
@@ -59,7 +59,7 @@ const About = () => {
               <div className={styles.statLabel}>Years Experience</div>
             </div>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>100+</div>
+              <div className={styles.statNumber}>50+</div>
               <div className={styles.statLabel}>Campaigns Delivered</div>
             </div>
             <div className={styles.stat}>

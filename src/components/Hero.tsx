@@ -5,9 +5,10 @@ const Hero = () => {
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.imageContainer}>
+        <div className={styles.animatedBackground}></div>
         <div className={styles.overlay}></div>
         <img
-          src="/images/header-image/header-image.jpg"
+          src="/images/header-image/header-image-2.png"
           alt="Jerome Hunter"
           className={styles.heroImage}
         />

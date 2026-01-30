@@ -14,11 +14,37 @@
   z-index: 0;
 }
 
+.animatedBackground {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #FF6B35, #F7931E, #FF1744, #FF6B35);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .heroImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  opacity: 0.9;
 }
 
 .overlay {
@@ -26,16 +52,16 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(10, 10, 10, 0.4) 0%,
-    rgba(10, 10, 10, 0.7) 50%,
-    rgba(10, 10, 10, 0.9) 100%
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.6) 50%,
+    rgba(10, 10, 10, 0.8) 100%
   );
-  z-index: 1;
+  z-index: 2;
 }
 
 .content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   max-width: 1200px;
   padding: 0 calc(var(--spacing-unit) * 4);
@@ -82,14 +108,17 @@
   font-size: 1rem;
   font-weight: 600;
   border-radius: 0;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .ctaButton {
   background-color: var(--color-accent);
   color: var(--color-bg);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .ctaButton::before {
@@ -98,21 +127,50 @@
   inset: 0;
   background-color: rgba(255, 255, 255, 0.2);
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
 }
 
 .ctaButton:hover::before {
   transform: translateX(0);
 }
 
+.ctaButton:active {
+  transform: translateY(0);
+}
+
 .ctaButtonSecondary {
   border: 2px solid var(--color-text);
   color: var(--color-text);
+  background: transparent;
+}
+
+.ctaButtonSecondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .ctaButtonSecondary:hover {
-  background-color: var(--color-text);
   color: var(--color-bg);
+  transform: translateY(-2px);
+}
+
+.ctaButtonSecondary:hover::before {
+  transform: scaleX(1);
+}
+
+.ctaButtonSecondary:active {
+  transform: translateY(0);
 }
 
 .scrollIndicator {
@@ -124,7 +182,7 @@
   flex-direction: column;
   align-items: center;
   gap: calc(var(--spacing-unit) * 2);
-  z-index: 2;
+  z-index: 3;
 }
 
 .scrollIndicator span {
