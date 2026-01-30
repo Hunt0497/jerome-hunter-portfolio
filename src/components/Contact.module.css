@@ -1,0 +1,180 @@
+.contact {
+  padding: calc(var(--spacing-unit) * 15) 0 0;
+  background-color: #0f0f0f;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 4);
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--color-text-secondary);
+  margin-bottom: calc(var(--spacing-unit) * 8);
+  line-height: 1.6;
+}
+
+.contactInfo {
+  display: grid;
+  gap: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 8);
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 1);
+  padding-bottom: calc(var(--spacing-unit) * 3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-secondary);
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.value:hover {
+  color: var(--color-accent);
+}
+
+.cta {
+  margin-top: calc(var(--spacing-unit) * 8);
+  margin-bottom: calc(var(--spacing-unit) * 12);
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 6);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover::before {
+  transform: translateX(0);
+}
+
+.ctaButton:hover {
+  transform: translateY(-4px);
+}
+
+.footer {
+  margin-top: calc(var(--spacing-unit) * 8);
+  padding: calc(var(--spacing-unit) * 6) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 4);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.footerContent p {
+  font-size: 0.95rem;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.footerNote {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: calc(var(--spacing-unit) * 10) 0 0;
+  }
+
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 3);
+  }
+
+  .title {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .subtitle {
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .contactInfo {
+    gap: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .infoItem {
+    padding-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .value {
+    font-size: 1.05rem;
+  }
+
+  .cta {
+    margin-top: calc(var(--spacing-unit) * 6);
+    margin-bottom: calc(var(--spacing-unit) * 8);
+  }
+
+  .ctaButton {
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+    font-size: 1rem;
+  }
+
+  .footer {
+    padding: calc(var(--spacing-unit) * 4) 0;
+  }
+
+  .footerContent {
+    padding: 0 calc(var(--spacing-unit) * 3);
+  }
+
+  .footerContent p {
+    font-size: 0.85rem;
+  }
+}
