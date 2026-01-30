@@ -17,8 +17,8 @@ const categories: Category[] = [
     name: 'Product Design',
     folder: 'product-design',
     images: [
-      '/images/graphic-design/product-design/bronte/relish.png',
       '/images/graphic-design/product-design/dunsons/jam-jelly.png',
+      '/images/graphic-design/product-design/bronte/relish.png',
       '/images/graphic-design/product-design/flavours-of-the-past/ackee-label.png',
       '/images/graphic-design/product-design/flavours-of-the-past/coffee-label.png',
       '/images/graphic-design/product-design/flavours-of-the-past/ginger-label.png',
@@ -45,6 +45,7 @@ const categories: Category[] = [
     name: 'Billboards Design',
     folder: 'billboards',
     images: [
+      '/images/graphic-design/billboards/stratus/board-1.png',
       '/images/graphic-design/billboards/ncb/easy-safe-free-board1.png',
       '/images/graphic-design/billboards/redstripe/cash-back-bottles.png',
       '/images/graphic-design/billboards/redstripe/feel-the-music.png',
@@ -54,7 +55,6 @@ const categories: Category[] = [
       '/images/graphic-design/billboards/redstripe/just-right-3.png',
       '/images/graphic-design/billboards/redstripe/light-building-graphic.png',
       '/images/graphic-design/billboards/redstripe/wall-display-beach-party.png',
-      '/images/graphic-design/billboards/stratus/board-1.png',
       '/images/graphic-design/billboards/stratus/board-2.png',
       '/images/graphic-design/billboards/stratus/board-3.png',
       '/images/graphic-design/billboards/stratus/board-4.png',
@@ -68,10 +68,10 @@ const categories: Category[] = [
     name: 'Press & Poster Design',
     folder: 'press-design',
     images: [
+      '/images/graphic-design/press-design/brunswick/brunswick-press-poster.png',
       '/images/graphic-design/press-design/brunswick/brunswick-press-poster-2.png',
       '/images/graphic-design/press-design/brunswick/brunswick-press-poster-3.png',
       '/images/graphic-design/press-design/brunswick/brunswick-press-poster-4.png',
-      '/images/graphic-design/press-design/brunswick/brunswick-press-poster.png',
       '/images/graphic-design/press-design/first-global/through-Our-Eyes-1.png',
       '/images/graphic-design/press-design/first-global/through-Our-Eyes-2.png',
       '/images/graphic-design/press-design/first-global/through-Our-Eyes-3.png',
@@ -122,6 +122,7 @@ const categories: Category[] = [
     name: 'Other Marketing Materials',
     folder: 'other-marketing-materials',
     images: [
+      '/images/graphic-design/press-design/grace/mackerel-1.png',
       '/images/graphic-design/other-marketing-materials/bma-poster.jpg',
       '/images/graphic-design/other-marketing-materials/caribbean-choice-sm1.png',
       '/images/graphic-design/other-marketing-materials/caribbean-choice-sm2.png',

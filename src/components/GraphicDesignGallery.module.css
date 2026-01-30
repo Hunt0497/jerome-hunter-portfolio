@@ -74,8 +74,10 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
   background-color: #0f0f0f;
   transition: transform 0.5s ease;
+  padding: calc(var(--spacing-unit) * 2);
 }
 
 .categoryCard:hover .categoryImage img {
@@ -146,8 +148,10 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
   background-color: #0f0f0f;
   display: block;
+  padding: calc(var(--spacing-unit) * 2);
 }
 
 @media (max-width: 1024px) {
