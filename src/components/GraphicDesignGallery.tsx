@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import styles from './GraphicDesignGallery.module.css'
 
 interface Props {
@@ -42,36 +42,13 @@ const categories: Category[] = [
 
 const GraphicDesignGallery = ({ onClose }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Animate in
-    gsap.fromTo(
-      overlayRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.3 }
-    )
-    gsap.fromTo(
-      contentRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, delay: 0.2 }
-    )
-
-    // Prevent body scroll
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = 'auto'
     }
   }, [])
-
-  const handleClose = () => {
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.3,
-      onComplete: onClose
-    })
-  }
 
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName)
@@ -90,9 +67,22 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
   const currentImages = selectedCategoryData ? getImagesForCategory(selectedCategoryData.folder) : []
 
   return (
-    <div ref={overlayRef} className={styles.overlay} onClick={handleClose}>
-      <div ref={contentRef} className={styles.content} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={handleClose}>
+    <motion.div
+      className={styles.overlay}
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div
+        className={styles.content}
+        onClick={(e) => e.stopPropagation()}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <button className={styles.closeButton} onClick={onClose}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -151,8 +141,8 @@ const GraphicDesignGallery = ({ onClose }: Props) => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
