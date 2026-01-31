@@ -27,6 +27,12 @@ const Contact = () => {
               </a>
             </div>
             <div className={styles.infoItem}>
+              <span className={styles.label}>Phone</span>
+              <a href="tel:437-876-1469" className={styles.value}>
+                437-876-1469
+              </a>
+            </div>
+            <div className={styles.infoItem}>
               <span className={styles.label}>Location</span>
               <span className={styles.value}>Orléans, Ottawa, ON, Canada</span>
             </div>
