@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useInView } from './useInView'
 import styles from './Portfolio.module.css'
 import GraphicDesignGallery from './GraphicDesignGallery'
-import PhotographyGallery from './PhotographyGallery'
 
 const portfolioData = {
   graphicDesign: [
@@ -67,7 +66,28 @@ const portfolioData = {
       figma: 'https://www.figma.com/design/t7icEv6sEYu10rZhUNo8h8/VISION---A03-Website-Design-Project?node-id=0-1&t=RH0ISpO5P4ktj3Ro-1',
     },
   ],
-  photography: [],
+  photography: [
+    { image: '/images/photography/hunter_j_portrait.jpg', title: 'Portrait 1' },
+    { image: '/images/photography/hunter_j_portrait-2.jpg', title: 'Portrait 2' },
+    { image: '/images/photography/hunter_j_portrait-3.jpg', title: 'Portrait 3' },
+    { image: '/images/photography/hunter_j_portrait-4.jpg', title: 'Portrait 4' },
+    { image: '/images/photography/hunter_j_portrait-5.jpg', title: 'Portrait 5' },
+    { image: '/images/photography/hunter_j_portrait-6.jpg', title: 'Portrait 6' },
+    { image: '/images/photography/hunter_j_portrait-7.jpg', title: 'Portrait 7' },
+    { image: '/images/photography/hunter_j_portrait-8.jpg', title: 'Portrait 8' },
+    { image: '/images/photography/hunter_j_portrait-9.jpg', title: 'Portrait 9' },
+    { image: '/images/photography/hunter_j_portrait-10.jpg', title: 'Portrait 10' },
+    { image: '/images/photography/hunter_j_DOF_01.jpg', title: 'DOF 1' },
+    { image: '/images/photography/hunter_j_inital_01.jpg', title: 'Initial 1' },
+    { image: '/images/photography/hunter_j_inital_04.jpg', title: 'Initial 4' },
+    { image: '/images/photography/hunter_j_thursday-1.jpg', title: 'Thursday 1' },
+    { image: '/images/photography/hunter_j_thursday-3.jpg', title: 'Thursday 3' },
+    { image: '/images/photography/hunter_j_thursday-6.jpg', title: 'Thursday 6' },
+    { image: '/images/photography/hunter_j_thursday-7.jpg', title: 'Thursday 7' },
+    { image: '/images/photography/IMG_0025.JPG', title: 'IMG 0025' },
+    { image: '/images/photography/IMG_0029.JPG', title: 'IMG 0029' },
+    { image: '/images/photography/IMG_1161.jpg', title: 'IMG 1161' },
+  ],
 }
 
 type Category = 'graphicDesign' | 'webDevelopment' | 'uxui' | 'photography'
@@ -77,7 +97,7 @@ const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('graphicDesign')
   const [showGraphicGallery, setShowGraphicGallery] = useState(false)
   const [selectedGraphicCategory, setSelectedGraphicCategory] = useState<number | undefined>(undefined)
-  const [showPhotographyGallery, setShowPhotographyGallery] = useState(false)
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null)
 
   const categories = [
     { key: 'graphicDesign' as Category, label: 'Graphic Design' },
@@ -119,35 +139,7 @@ const Portfolio = () => {
         </motion.div>
 
         <div className={styles.grid}>
-          {activeCategory === 'photography' ? (
-            <div
-              className={styles.photographyButton}
-              onClick={() => setShowPhotographyGallery(true)}
-            >
-              <motion.div
-                className={styles.portfolioItem}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className={styles.imageWrapper}>
-                  <div className={styles.photographyPlaceholder}>
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                      <polyline points="21 15 16 10 5 21"></polyline>
-                    </svg>
-                  </div>
-                  <div className={styles.overlay}>
-                    <h3 className={styles.itemTitle}>Photography Gallery</h3>
-                    <button className={styles.projectButton}>View Gallery</button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          ) : (
-            portfolioData[activeCategory].map((item, index) => (
+          {portfolioData[activeCategory].map((item, index) => (
             <motion.div
               key={index}
               className={styles.portfolioItem}
@@ -158,9 +150,11 @@ const Portfolio = () => {
                 if (activeCategory === 'graphicDesign' && 'categoryIndex' in item) {
                   setSelectedGraphicCategory(item.categoryIndex)
                   setShowGraphicGallery(true)
+                } else if (activeCategory === 'photography') {
+                  setFullscreenImage(item.image)
                 }
               }}
-              style={{ cursor: activeCategory === 'graphicDesign' ? 'pointer' : 'default' }}
+              style={{ cursor: (activeCategory === 'graphicDesign' || activeCategory === 'photography') ? 'pointer' : 'default' }}
             >
               <div className={styles.imageWrapper}>
                 <img src={item.image} alt={item.title} />
@@ -169,6 +163,10 @@ const Portfolio = () => {
                   {activeCategory === 'graphicDesign' ? (
                     <button className={styles.projectButton}>
                       View Gallery
+                    </button>
+                  ) : activeCategory === 'photography' ? (
+                    <button className={styles.projectButton}>
+                      View Fullscreen
                     </button>
                   ) : (
                     <div className={styles.buttonGroup}>
@@ -221,8 +219,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </motion.div>
-          ))
-          )}
+          ))}
         </div>
       </div>
 
@@ -236,11 +233,24 @@ const Portfolio = () => {
         />
       )}
 
-      {showPhotographyGallery && (
-        <PhotographyGallery
-          onClose={() => setShowPhotographyGallery(false)}
-          images={portfolioData.photography}
-        />
+      {fullscreenImage && (
+        <div
+          className={styles.fullscreenOverlay}
+          onClick={() => setFullscreenImage(null)}
+        >
+          <button
+            className={styles.closeButton}
+            onClick={() => setFullscreenImage(null)}
+          >
+            ×
+          </button>
+          <img
+            src={fullscreenImage}
+            alt="Fullscreen view"
+            className={styles.fullscreenImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
       )}
     </section>
   )
