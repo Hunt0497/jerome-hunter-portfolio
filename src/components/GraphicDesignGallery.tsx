@@ -52,11 +52,9 @@ const categories: Category[] = [
       '/images/graphic-design/billboards/redstripe/feel-the-music.png',
       '/images/graphic-design/billboards/redstripe/jamaica-50-wall-wrap.png',
       '/images/graphic-design/billboards/redstripe/just-right-1.png',
-      '/images/graphic-design/billboards/redstripe/just-right-2.png',
       '/images/graphic-design/billboards/redstripe/just-right-3.png',
       '/images/graphic-design/billboards/redstripe/light-building-graphic.png',
       '/images/graphic-design/billboards/redstripe/wall-display-beach-party.png',
-      '/images/graphic-design/billboards/stratus/board-2.png',
       '/images/graphic-design/billboards/stratus/board-3.png',
       '/images/graphic-design/billboards/stratus/board-4.png',
       '/images/graphic-design/billboards/stratus/board-5.png',
@@ -105,8 +103,6 @@ const categories: Category[] = [
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss2.png',
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss3.png',
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss4.png',
-      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss5_.png',
-      '/images/graphic-design/press-design/ncb/self-serve-campaign/ss6.png',
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss7.png',
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss8.png',
       '/images/graphic-design/press-design/ncb/self-serve-campaign/ss9.png',
@@ -126,7 +122,6 @@ const categories: Category[] = [
       '/images/graphic-design/press-design/grace/mackerel-1.png',
       '/images/graphic-design/other-marketing-materials/bma-poster.jpg',
       '/images/graphic-design/other-marketing-materials/caribbean-choice-sm1.png',
-      '/images/graphic-design/other-marketing-materials/caribbean-choice-sm2.png',
       '/images/graphic-design/other-marketing-materials/caribbean-choice-sm3.png',
       '/images/graphic-design/other-marketing-materials/easy-safe-free-banner.png',
       '/images/graphic-design/other-marketing-materials/farmer-brown-punch-poster1.png',
@@ -147,6 +142,7 @@ const GraphicDesignGallery = ({ onClose, initialCategory }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     initialCategory !== undefined ? categories[initialCategory].name : null
   )
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -231,6 +227,8 @@ const GraphicDesignGallery = ({ onClose, initialCategory }: Props) => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                  onClick={() => setFullscreenImage(image)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <img
                     src={image}
@@ -246,6 +244,32 @@ const GraphicDesignGallery = ({ onClose, initialCategory }: Props) => {
           </div>
         )}
       </motion.div>
+
+      {fullscreenImage && (
+        <motion.div
+          className={styles.fullscreenOverlay}
+          onClick={() => setFullscreenImage(null)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <button
+            className={styles.fullscreenClose}
+            onClick={() => setFullscreenImage(null)}
+          >
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <img
+            src={fullscreenImage}
+            alt="Fullscreen view"
+            className={styles.fullscreenImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </motion.div>
+      )}
     </motion.div>
   )
 }
