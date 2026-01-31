@@ -23,7 +23,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run 
+      - run: npm run build
       - run: cp -R images dist/images
       - uses: actions/upload-pages-artifact@v3
         with:
