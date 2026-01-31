@@ -1,5 +1,9 @@
+
 import { motion } from 'framer-motion'
 import styles from './Hero.module.css'
+
+// Ensures assets work both locally and on GitHub Pages (repo subpath)
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
 const Hero = () => {
   return (
@@ -8,7 +12,7 @@ const Hero = () => {
         <div className={styles.animatedBackground}></div>
         <div className={styles.overlay}></div>
         <img
-          src="/images/header-image/header-image-2.png"
+          src={asset('images/header-image/header-image-2.png')}
           alt="Jerome Hunter"
           className={styles.heroImage}
         />
