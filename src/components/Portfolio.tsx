@@ -6,14 +6,31 @@ import GraphicDesignGallery from './GraphicDesignGallery'
 
 const portfolioData = {
   graphicDesign: [
-    { image: '/images/graphic-design/billboards/ncb/easy-safe-free-board1.png', title: 'NCB - Easy Safe Free Campaign' },
-    { image: '/images/graphic-design/billboards/redstripe/cash-back-bottles.png', title: 'Red Stripe - Cash Back Bottles' },
-    { image: '/images/graphic-design/billboards/redstripe/just-right-1.png', title: 'Red Stripe - Just Right' },
-    { image: '/images/graphic-design/billboards/walkerswood/airport-round-about-board.jpg', title: 'Walkerswood - Airport Billboard' },
-    { image: '/images/graphic-design/press-design/ncb-insurance/insurance-campaign-ad1.png', title: 'NCB Insurance Campaign' },
-    { image: '/images/graphic-design/press-design/tastee/jamaica-nice.jpeg', title: 'Tastee - Jamaica Nice' },
-    { image: '/images/graphic-design/other-marketing-materials/tastee-poster-design.png', title: 'Tastee Poster Design' },
-    { image: '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-front.png', title: 'Vehicle Wrap Design' },
+    {
+      image: '/images/graphic-design/product-design/bronte/relish.png',
+      title: 'Product Design',
+      categoryIndex: 0
+    },
+    {
+      image: '/images/graphic-design/vehicle-wraps/associated-manufacturers/truck-back.png',
+      title: 'Vehicle Wrap Design',
+      categoryIndex: 1
+    },
+    {
+      image: '/images/graphic-design/billboards/stratus/board-1.png',
+      title: 'Billboards Design',
+      categoryIndex: 2
+    },
+    {
+      image: '/images/graphic-design/press-design/brunswick/brunswick-press-poster.png',
+      title: 'Press & Poster Design',
+      categoryIndex: 3
+    },
+    {
+      image: '/images/graphic-design/press-design/grace/mackerel-1.png',
+      title: 'Other Marketing Materials',
+      categoryIndex: 4
+    },
   ],
   webDevelopment: [
     {
@@ -57,6 +74,7 @@ const Portfolio = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 })
   const [activeCategory, setActiveCategory] = useState<Category>('graphicDesign')
   const [showGraphicGallery, setShowGraphicGallery] = useState(false)
+  const [selectedGraphicCategory, setSelectedGraphicCategory] = useState<number | undefined>(undefined)
 
   const categories = [
     { key: 'graphicDesign' as Category, label: 'Graphic Design' },
@@ -105,7 +123,8 @@ const Portfolio = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => {
-                if (activeCategory === 'graphicDesign') {
+                if (activeCategory === 'graphicDesign' && 'categoryIndex' in item) {
+                  setSelectedGraphicCategory(item.categoryIndex)
                   setShowGraphicGallery(true)
                 }
               }}
@@ -175,7 +194,13 @@ const Portfolio = () => {
       </div>
 
       {showGraphicGallery && (
-        <GraphicDesignGallery onClose={() => setShowGraphicGallery(false)} />
+        <GraphicDesignGallery
+          onClose={() => {
+            setShowGraphicGallery(false)
+            setSelectedGraphicCategory(undefined)
+          }}
+          initialCategory={selectedGraphicCategory}
+        />
       )}
     </section>
   )

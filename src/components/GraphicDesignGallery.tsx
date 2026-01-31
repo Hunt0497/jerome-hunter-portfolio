@@ -4,6 +4,7 @@ import styles from './GraphicDesignGallery.module.css'
 
 interface Props {
   onClose: () => void
+  initialCategory?: number
 }
 
 interface Category {
@@ -142,8 +143,10 @@ const categories: Category[] = [
   }
 ]
 
-const GraphicDesignGallery = ({ onClose }: Props) => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+const GraphicDesignGallery = ({ onClose, initialCategory }: Props) => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    initialCategory !== undefined ? categories[initialCategory].name : null
+  )
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
