@@ -1,83 +1,198 @@
-# Jerome Hunter - Portfolio Website
+# Jerome Hunter Portfolio Website
 
 A modern, dynamic portfolio website showcasing Jerome Hunter's work in UX/UI design, visual communication, and website development.
 
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- Framer Motion
+- CSS Modules
+
 ## Features
 
-### Visual Design
-- **Bold Hero Section** - Large typography with dramatic header image
-- **Dark Theme** - High-contrast design with sleek, modern aesthetic
-- **Smooth Animations** - Framer Motion integration for refined transitions
-- **Scroll-Triggered Effects** - Elements reveal elegantly as you scroll
-- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- Bold hero section with large typography and dramatic header image
+- Dark theme with high contrast styling
+- Smooth animations (Framer Motion)
+- Scroll-triggered reveal effects
+- Responsive layout for desktop, tablet, and mobile
 
-### Sections
+## Site Sections
 
-1. **Navigation** - Fixed header with smooth scroll links
-2. **Hero** - Full-screen hero with large typography and call-to-action buttons
-3. **About** - Professional summary with key statistics and experience highlights
-4. **Brands** - Logo showcase featuring major clients worked with
-5. **Portfolio** - Three filterable categories:
-   - Graphic Design (full-frame gallery)
-   - Website Development (with GitHub links)
-   - UX/UI Design (with Figma links)
-6. **Services** - Four service areas with detailed capabilities
-7. **Contact** - Contact information and email CTA
+1. Navigation (fixed header with smooth scroll links)
+2. Hero
+3. About (summary, stats, experience highlights)
+4. Brands (logo showcase)
+5. Portfolio (filterable categories)
+   - Graphic Design (gallery)
+   - Website Development (GitHub links)
+   - UX/UI Design (Figma links)
+6. Services
+7. Contact
 
-## Technology Stack
+## Project Structure
 
-- **React 18** - Modern UI library
-- **TypeScript** - Type-safe development
-- **Vite** - Fast build tool and dev server
-- **Framer Motion** - Animation library
-- **CSS Modules** - Scoped styling
+Content is pulled from these folders:
 
-## Local Development
+- Personal info: `my-information/`
+- Hero image: `images/header-image/`
+- Brand logos: `images/logo-brands-worked-on/`
+- Portfolio work:
+  - `images/graphic-design/`
+  - `images/website-development/`
+  - `images/ux-ui-designs/`
+  - (Optional) `images/photography/`
 
-The development server starts automatically. Your site is available at the local URL shown in the terminal.
+Component content lives here:
 
-## Building for Production
+- `src/components/About.tsx`
+- `src/components/Contact.tsx`
+- `src/components/Services.tsx`
+- `src/components/Portfolio.tsx`
+
+Theme variables live here:
+
+- `src/index.css`
+
+## Local Development (VS Code)
+
+### Prerequisites
+
+- Node.js 18+ (recommended: Node 20)
+
+Check versions:
+
+```bash
+node -v
+npm -v
+```
+
+### Install
+
+From the project root (the folder with `package.json`):
+
+```bash
+npm install
+```
+
+### Run the dev server
+
+```bash
+npm run dev
+```
+
+Vite will print a local URL in the terminal (usually `http://localhost:5173`). Open it in your browser.
+
+### Production build
 
 ```bash
 npm run build
 ```
 
-The built files will be in the `dist` folder.
+Build output is created in `dist/`.
 
-## Content Sources
+### Preview the production build locally
 
-All content is pulled from the repository folders:
-- Personal info: `my-information/`
-- Hero image: `images/header-image/`
-- Brand logos: `images/logo-brands-worked-on/`
-- Portfolio work: `images/graphic-design/`, `images/website-development/`, `images/ux-ui-designs/`
+```bash
+npm run preview
+```
 
-## Portfolio Links
+## Update Portfolio Links
 
-Update the GitHub and Figma URLs in `src/components/Portfolio.tsx` to link to your actual project repositories and design files.
+Update GitHub and Figma URLs inside:
 
-## Customization
+- `src/components/Portfolio.tsx`
 
-### Colors
-Edit CSS variables in `src/index.css`:
-- `--color-bg` - Background color
-- `--color-text` - Primary text color
-- `--color-accent` - Accent/brand color
+## Deploy
 
-### Content
-Update content in individual component files:
-- Contact info: `src/components/Contact.tsx`
-- About text: `src/components/About.tsx`
-- Services: `src/components/Services.tsx`
-- Portfolio items: `src/components/Portfolio.tsx`
+### Option A: GitHub Pages (recommended for this Vite static site)
 
-## Design Inspiration
+1) Set the Vite base path so assets load correctly on Pages.
 
-The design follows modern portfolio best practices with:
-- Large, confident typography
-- Generous white space
-- Subtle hover interactions
-- Smooth page transitions
-- Professional, high-end aesthetic
+If your repo is `https://github.com/<user>/<repo>`, your Pages URL is:
 
-Built with attention to detail for a premium, creative-director level presentation.
+`https://<user>.github.io/<repo>/`
+
+Update `vite.config.ts` (or `vite.config.js`):
+
+```ts
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  base: "/<repo>/",
+});
+```
+
+2) Add this workflow file at `.github/workflows/deploy.yml`:
+
+```yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+3) In GitHub: Repo Settings > Pages > Source: select **GitHub Actions**.
+
+4) Push to `main`, then check the Actions tab for the deployed URL.
+
+Notes:
+- If you use React Router with clean URLs, GitHub Pages can 404 on refresh. Use `HashRouter` or add a SPA fallback.
+
+### Option B: Vercel
+
+Import the GitHub repo in Vercel. It will auto-detect Vite and deploy on every push.
+
+### Option C: Netlify
+
+Import the repo in Netlify:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+## Troubleshooting
+
+- If `git push` is rejected, your remote has newer commits. Run:
+
+```bash
+git pull --rebase origin main
+git push
+```
+
+- If images do not appear on GitHub Pages, confirm the Vite `base` setting matches the repo name.
