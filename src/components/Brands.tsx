@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion'
 import { useInView } from './useInView'
+
 import styles from './Brands.module.css'
 
+// Ensures assets work both locally and on GitHub Pages (repo subpath)
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 const brands = [
-  { name: 'BMA', logo: '/images/logo-brands-worked-on/bma-logo.svg' },
-  { name: 'Brunswick', logo: '/images/logo-brands-worked-on/brunswick-logo.svg' },
-  { name: 'Digicel', logo: '/images/logo-brands-worked-on/digicel-logo.svg' },
-  { name: 'NCB Jamaica', logo: '/images/logo-brands-worked-on/ncb-jamaica-logo.svg' },
-  { name: 'Red Stripe', logo: '/images/logo-brands-worked-on/redstripe-logo.svg' },
-  { name: 'Tastee Cheese', logo: '/images/logo-brands-worked-on/tastee-cheese-logo.svg' },
-  { name: 'Walkerswood', logo: '/images/logo-brands-worked-on/walkerswood-logo.svg' },
+  { name: 'BMA', logo: asset('images/logo-brands-worked-on/bma-logo.svg') },
+  { name: 'Brunswick', logo: asset('images/logo-brands-worked-on/brunswick-logo.svg') },
+  { name: 'Digicel', logo: asset('images/logo-brands-worked-on/digicel-logo.svg') },
+  { name: 'NCB Jamaica', logo: asset('images/logo-brands-worked-on/ncb-jamaica-logo.svg') },
+  { name: 'Red Stripe', logo: asset('images/logo-brands-worked-on/redstripe-logo.svg') },
+  { name: 'Tastee Cheese', logo: asset('images/logo-brands-worked-on/tastee-cheese-logo.svg') },
+  { name: 'Walkerswood', logo: asset('images/logo-brands-worked-on/walkerswood-logo.svg') },
 ]
 
 const Brands = () => {
