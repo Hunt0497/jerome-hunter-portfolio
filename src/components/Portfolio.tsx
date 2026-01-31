@@ -34,13 +34,13 @@ const portfolioData = {
   ],
   webDevelopment: [
     {
-      image: '/images/website-development/my-coffee-house/my-coffee-house.png',
+      image: '/images/website-development/my-coffee-house/my-coffee-house-2.png',
       title: 'My Coffee House',
       website: 'https://hunt0497.github.io/mtm6201-midterm/',
       github: 'https://github.com/Hunt0497/mtm6201-midterm',
     },
     {
-      image: '/images/website-development/verdance-recipe-website/verdance-cover.png',
+      image: '/images/website-development/verdance-recipe-website/verdance-cover-2.png',
       title: 'Verdance Recipe Website',
       website: 'https://hunt0497.github.io/mtm6201-final/',
       github: 'https://github.com/Hunt0497/mtm6201-final',
@@ -54,13 +54,13 @@ const portfolioData = {
       figma: 'https://www.figma.com/design/ufdcsGBJi5ro9KVc8aJtGV/Final-Project?node-id=129-666&t=ldSpb7isjspxwhK5-1',
     },
     {
-      image: '/images/ux-ui-designs/verdance-Restaurant-Project/verdance-cover.png',
+      image: '/images/ux-ui-designs/verdance-Restaurant-Project/verdance-cover-2.png',
       title: 'Verdance Restaurant Project',
       prototype: 'https://www.figma.com/proto/4ntnyVX3ddBszx7Zg2s03R/Verdance-Restaurant-Project?node-id=2199-3514&p=f&t=opDCDxotqN5QEvU8-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2199%3A3514&show-proto-sidebar=1',
       figma: 'https://www.figma.com/design/4ntnyVX3ddBszx7Zg2s03R/Verdance-Restaurant-Project?node-id=2049-761&t=3vtfqeg5Yc0naLzn-1',
     },
     {
-      image: '/images/ux-ui-designs/vision-signs/vision-signs-cover.png',
+      image: '/images/ux-ui-designs/vision-signs/vision-signs-cover-2.png',
       title: 'Vision Signs',
       prototype: 'https://www.figma.com/proto/t7icEv6sEYu10rZhUNo8h8/VISION---A03-Website-Design-Project?page-id=0%3A1&node-id=1-7&p=f&viewport=132%2C210%2C0.62&t=32zyCcUEYyLRQ1SD-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A7&show-proto-sidebar=1',
       figma: 'https://www.figma.com/design/t7icEv6sEYu10rZhUNo8h8/VISION---A03-Website-Design-Project?node-id=0-1&t=RH0ISpO5P4ktj3Ro-1',

@@ -248,14 +248,20 @@ const GraphicDesignGallery = ({ onClose, initialCategory }: Props) => {
       {fullscreenImage && (
         <motion.div
           className={styles.fullscreenOverlay}
-          onClick={() => setFullscreenImage(null)}
+          onClick={(e) => {
+            e.stopPropagation()
+            setFullscreenImage(null)
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <button
             className={styles.fullscreenClose}
-            onClick={() => setFullscreenImage(null)}
+            onClick={(e) => {
+              e.stopPropagation()
+              setFullscreenImage(null)
+            }}
           >
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>

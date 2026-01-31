@@ -25,7 +25,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className={styles.statement}>
-              Building User-Focused Visual Experiences Since 2007
+              Building User-Focused Visual Experiences at Scale
             </h3>
           </motion.div>
 
@@ -55,7 +55,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className={styles.stat}>
-              <div className={styles.statNumber}>18+</div>
+              <div className={styles.statNumber}>15+</div>
               <div className={styles.statLabel}>Years Experience</div>
             </div>
             <div className={styles.stat}>
