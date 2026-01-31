@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useInView } from './useInView'
 import styles from './Portfolio.module.css'
 import GraphicDesignGallery from './GraphicDesignGallery'
+import PhotographyGallery from './PhotographyGallery'
 
 const portfolioData = {
   graphicDesign: [
@@ -66,20 +67,23 @@ const portfolioData = {
       figma: 'https://www.figma.com/design/t7icEv6sEYu10rZhUNo8h8/VISION---A03-Website-Design-Project?node-id=0-1&t=RH0ISpO5P4ktj3Ro-1',
     },
   ],
+  photography: [],
 }
 
-type Category = 'graphicDesign' | 'webDevelopment' | 'uxui'
+type Category = 'graphicDesign' | 'webDevelopment' | 'uxui' | 'photography'
 
 const Portfolio = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 })
   const [activeCategory, setActiveCategory] = useState<Category>('graphicDesign')
   const [showGraphicGallery, setShowGraphicGallery] = useState(false)
   const [selectedGraphicCategory, setSelectedGraphicCategory] = useState<number | undefined>(undefined)
+  const [showPhotographyGallery, setShowPhotographyGallery] = useState(false)
 
   const categories = [
     { key: 'graphicDesign' as Category, label: 'Graphic Design' },
     { key: 'webDevelopment' as Category, label: 'Website Development' },
     { key: 'uxui' as Category, label: 'UX/UI Design' },
+    { key: 'photography' as Category, label: 'Photography' },
   ]
 
   return (
@@ -115,7 +119,35 @@ const Portfolio = () => {
         </motion.div>
 
         <div className={styles.grid}>
-          {portfolioData[activeCategory].map((item, index) => (
+          {activeCategory === 'photography' ? (
+            <div
+              className={styles.photographyButton}
+              onClick={() => setShowPhotographyGallery(true)}
+            >
+              <motion.div
+                className={styles.portfolioItem}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className={styles.imageWrapper}>
+                  <div className={styles.photographyPlaceholder}>
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                  </div>
+                  <div className={styles.overlay}>
+                    <h3 className={styles.itemTitle}>Photography Gallery</h3>
+                    <button className={styles.projectButton}>View Gallery</button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          ) : (
+            portfolioData[activeCategory].map((item, index) => (
             <motion.div
               key={index}
               className={styles.portfolioItem}
@@ -189,7 +221,8 @@ const Portfolio = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+          ))
+          )}
         </div>
       </div>
 
@@ -200,6 +233,13 @@ const Portfolio = () => {
             setSelectedGraphicCategory(undefined)
           }}
           initialCategory={selectedGraphicCategory}
+        />
+      )}
+
+      {showPhotographyGallery && (
+        <PhotographyGallery
+          onClose={() => setShowPhotographyGallery(false)}
+          images={portfolioData.photography}
         />
       )}
     </section>
